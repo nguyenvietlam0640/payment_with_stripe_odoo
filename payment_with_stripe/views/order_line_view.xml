@@ -1,0 +1,18 @@
+<odoo>
+	<record model='ir.actions.act_window' id='order_line_action'>
+		<field name='name'>Orderline action</field>
+		<field name='res_model'>payment_with_stripe.order_line</field>
+		<field name='view_mode'>tree,form</field>
+	</record>
+
+
+	<record id="order_line_tree_view" model="ir.ui.view">
+		<field name="name">orderline tree</field>
+		<field name="model">payment_with_stripe.order_line</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name" />
+			</tree>
+		</field>
+	</record>
+</odoo>

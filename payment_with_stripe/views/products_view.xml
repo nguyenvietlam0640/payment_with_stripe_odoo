@@ -1,0 +1,21 @@
+<odoo>
+
+
+	<!-- consumable -->
+
+
+
+	<menuitem id='products_menu'
+		parent='payment_with_stripe.order_menu'
+		action='product.product_template_action_all' />
+
+
+	<record id="product.product_template_action_all"
+		model="ir.actions.act_window">
+		<field name="context">{'search_default_consumable':1}</field>
+	</record>
+
+
+
+	<!-- Product.template.product.kanban -->
+</odoo>

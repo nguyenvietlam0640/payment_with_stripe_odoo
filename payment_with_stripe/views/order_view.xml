@@ -1,0 +1,102 @@
+<odoo>
+
+	<record id="order_tree_view" model="ir.ui.view">
+		<field name="name">order tree</field>
+		<field name="model">payment_with_stripe.order</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name" />
+				<field name="payment_account_id" />
+				<field name="total" />
+				<field name="status" />
+			</tree>
+		</field>
+	</record>
+	<record id="order_form_view" model="ir.ui.view">
+		<field name="name">order form</field>
+		<field name="model">payment_with_stripe.order</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+
+					<group>
+						<group>
+							<field name="name" />
+							<field name="payment_account_id" />
+						</group>
+
+						<group>
+							<field name="currency_id" />
+							<field name="shipping_fee" />
+							<field style='color: #00CCCC;' name="status"
+								attrs="{'invisible': [('status','!=','wa')] }" />
+							<field style='color: green;' name="status"
+								attrs="{'invisible': [('status','!=','su')] }" />
+							<field style='color: red;' name="status"
+								attrs="{'invisible': [('status','!=','fa')] }" />
+							<field style='color: orange;' name="status"
+								attrs="{'invisible': [('status','!=','ca')] }" />
+						</group>
+					</group>
+
+					<group>
+						<field name="order_line_ids" />
+					</group>
+
+					<group>
+						<group>
+							<button class="btn btn-success" type="object"
+								name="generate_checkout_session"
+								attrs="{'invisible': [('payment_url','!=',False)] }">Generate checkout url</button>
+						</group>
+						<group>
+							<field style='font-size:30px;' name="total" />
+						</group>
+					</group>
+
+					<notebook>
+						<page string='Payment url'>
+							<field name="payment_url" widget="url" />
+						</page>
+
+
+					</notebook>
+
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+
+	<record model='ir.actions.act_window' id='order_action'>
+		<field name='name'>Stripe Payment</field>
+		<field name='res_model'>payment_with_stripe.order</field>
+		<field name='view_mode'>tree,form</field>
+	</record>
+
+
+
+
+
+
+	<menuitem id='order_menu' action='order_action'
+		web_icon="payment_with_stripe,static/images.png" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</odoo>

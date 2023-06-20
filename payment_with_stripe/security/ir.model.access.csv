@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_payment_with_stripe_payment_with_stripe,payment_with_stripe.payment_with_stripe,model_payment_with_stripe_payment_with_stripe,base.group_user,1,1,1,1
